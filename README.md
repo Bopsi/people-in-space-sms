@@ -13,6 +13,10 @@ Add a `.env` file in project root and add following information
 #Twilio API keys
 SID="twilio SID"
 TOKEN="twilio token"
+
+#Twilio contacts
+FROM="twilio trial account number"
+TO="twilio verified number"
 ```
 
 ##Run
