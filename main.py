@@ -1,8 +1,6 @@
 import requests
 import json
 
-# from dotenv import load_dotenv
-
 print('How many humans are in space right now?')
 resp = requests.get('http://api.open-notify.org/astros.json')
 
