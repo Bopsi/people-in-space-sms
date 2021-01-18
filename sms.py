@@ -1,4 +1,6 @@
 import os
+
+from twilio.base.exceptions import TwilioRestException
 from twilio.rest import Client
 
 account_sid = os.environ['SID']
@@ -16,11 +18,16 @@ def send_sms(obj):
         body = body + person['name'] + ' in ' + person['craft'] + '\n'
 
     print(body)
-    message = client.messages.create(
-        body=body,
-        from_=sender,
-        to=recipient
-    )
-
-    print(message.sid)
-    print('SMS sent to ', recipient)
+    try:
+        message = client.messages.create(
+            body=body,
+            from_=sender,
+            to=recipient
+        )
+        # print(message.sid)
+        print('SMS sent to ', recipient)
+    except TwilioRestException as e:
+        print('Unable to send SMS')
+        # print('Error:', e)
+    finally:
+        print('Exiting...')
